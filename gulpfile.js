@@ -13,11 +13,10 @@ gulp.task('connect',function(){
 //编译sass
 gulp.task('compass',function(){
     var skinName = 'default';
-    gulp.src('./assets/'+ skinName +'/*.scss')
+    gulp.src('./assets/'+ skinName +'/**/*.scss') //没有指定想根文件夹，不能复制
     .pipe(compass({
         project: path.join(__dirname, 'assets/' + skinName),
-        css: 'css',
+        css: '../../skin',
         sass: 'sass'
-    }))
-    .pipe(gulp.dest('./skin'));
+    }));
 });

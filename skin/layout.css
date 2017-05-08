@@ -1,0 +1,20 @@
+.layout-default .container-fluid:first-child {
+  padding: 0px;
+}
+
+.layout-default .left {
+  background: #EFF2F7;
+}
+
+#app {
+  height: 100%;
+}
+
+.layout-default, .layout-default .main, .layout-default .row, .layout-default .left, .layout-default .right {
+  height: inherit;
+}
+
+.layout-default .main {
+  margin-top: "42px";
+  padding-top: "42px";
+}
