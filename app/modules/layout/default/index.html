@@ -5,14 +5,14 @@
             <li><router-link to="/croute" >croute</router-link></li>
         </ul>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid main">
         <div class="row">
-            <div class="col-lg-2">
+            <div class="col-lg-2 left" >
                 <ul>
                     <li v-for="(item,index) in childs" ><router-link :to="item">{{item}}</router-link></li> 
                 </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 right">
                 <router-view></router-view>                    
             </div>
         </div>
