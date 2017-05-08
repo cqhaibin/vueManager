@@ -1,0 +1,29 @@
+{
+  "name": "vuemanger",
+  "version": "1.0.0",
+  "description": "vue manger for admin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": ".\\node_modules\\.bin\\gulp connect"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cqhaibin/vueManager.git"
+  },
+  "keywords": [
+    "vue",
+    "admin",
+    "manager"
+  ],
+  "author": "sam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cqhaibin/vueManager/issues"
+  },
+  "homepage": "https://github.com/cqhaibin/vueManager#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0"
+  }
+}

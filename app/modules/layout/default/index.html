@@ -1,0 +1,20 @@
+<div class="layout-default">
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li><router-link to="/ctitle" >title</router-link></li>
+            <li><router-link to="/croute" >croute</router-link></li>
+        </ul>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2">
+                <ul>
+                    <li v-for="(item,index) in childs" ><router-link :to="item">{{item}}</router-link></li> 
+                </ul>
+            </div>
+            <div class="col-lg-2">
+                <router-view></router-view>                    
+            </div>
+        </div>
+    </div>
+</div>
