@@ -8,8 +8,10 @@
     <div class="container-fluid main">
         <div class="row">
             <div class="col-lg-2 left" >
-                <ul>
-                    <li v-for="(item,index) in childs" ><router-link :to="item">{{item}}</router-link></li> 
+                <ul class="nav nav-pills nav-stacked menu-child" >
+                    <li v-for="(item,index) in childs" class="menu-item">
+                        <router-link :to="item" active-class="active" >{{item}}</router-link>
+                    </li> 
                 </ul>
             </div>
             <div class="col-lg-2 right">

@@ -8,7 +8,9 @@ gulp.task('connect',function(){
         root: './',
         port: 9001
     })
+    gulp.watch('./assets/default/sass/*.scss', ['compass']);
 });
+
 
 //编译sass
 gulp.task('compass',function(){

@@ -23,7 +23,7 @@ requirejs.config({
         },
         vue: {
             deps:[
-                'css!../skin/layout.css'
+                'css!../skin/main.css'
             ]
         }
     }

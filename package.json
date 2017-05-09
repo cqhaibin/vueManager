@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": ".\\node_modules\\.bin\\gulp connect"
+    "dev": ".\\node_modules\\.bin\\gulp connect"
   },
   "repository": {
     "type": "git",

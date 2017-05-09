@@ -4,6 +4,7 @@
 
 .layout-default .left {
   background: #EFF2F7;
+  padding: 0px;
 }
 
 #app {
@@ -15,6 +16,22 @@
 }
 
 .layout-default .main {
-  margin-top: "42px";
-  padding-top: "42px";
+  margin-top: -42px;
+  padding-top: 42px;
+}
+
+.menu-child {
+  margin: 0px;
+  padding: 0px;
+}
+
+.menu-child .menu-item {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.menu-child .menu-item .active {
+  background: #337ab7;
+  color: #fff;
 }

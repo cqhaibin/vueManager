@@ -1,10 +1,9 @@
-$head-height: '42px';
-
 .layout-default .container-fluid:first-child{
     padding: 0px;
 }
 .layout-default .left{
-    background: #EFF2F7;
+    background: $block-noraml-color;
+    padding: 0px;
 }
 #app{
     height: 100%;
@@ -13,6 +12,7 @@ $head-height: '42px';
     height: inherit;
 }
 .layout-default .main{
-    margin-top: $head-height;
+    margin-top: -$head-height;
     padding-top: $head-height;
 }
+
