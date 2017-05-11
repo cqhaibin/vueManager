@@ -1,4 +1,4 @@
-define(['require','jquery', 'vue', 'vueRouter', 'vuex'],function(require,$, Vue, VueRouter, Vuex){
+define(['require','jquery', 'vue', 'vueRouter', 'vuex', 'iview'],function(require,$, Vue, VueRouter, Vuex, iview){
     require.onResourceLoad = function(context, map, depArray){
         //requirejs 文件load成功后的回调
     }
@@ -23,6 +23,7 @@ define(['require','jquery', 'vue', 'vueRouter', 'vuex'],function(require,$, Vue,
         });        
         this.Vue.use(VueRouter);
         this.Vue.use(Vuex);
+        this.Vue.use(iview);
         this.router = new VueRouter(); 
         this.store = new this.Vuex.Store(this.store);
     }
@@ -71,7 +72,12 @@ define(['require','jquery', 'vue', 'vueRouter', 'vuex'],function(require,$, Vue,
     apt.createVue = function(){
         this.vue = new this.Vue({
             store: this.store,
-            router: this.router
+            router: this.router,
+            data: function(){
+                return {
+                    ttt: 'tttt'
+                }
+            }
         });
         return this.vue;
     }

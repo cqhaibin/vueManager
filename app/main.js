@@ -7,7 +7,8 @@ requirejs.config({
         vuex: '../lib/vuex',
         jquery: '../lib/jquery-3.2.1',
         bootstrap: '../lib/bootstrap',
-        css: '../lib/css'
+        css: '../lib/css',
+        iview: '../lib/iview'
     },
     map: {
         '*':{
@@ -17,23 +18,30 @@ requirejs.config({
     shim:{
         bootstrap:{
             deps:[
-                'jquery',
-                'css!../skin/bootstrap.css'
+                'jquery'
             ]
         },
         vue: {
             deps:[
                 'css!../skin/main.css'
             ]
+        },
+        iview: {
+            deps: [
+                'css!../skin/iview.css'
+            ]
         }
     }
 })
 
 
-require(['./app'],function(app){
+require(['./app', './test'],function(app, test){
     var _app = app.createApp();
     _app.registerGlobalComponents(['title', 'route', 'layout/default']).done(function(){
         var vue = _app.createVue();
+        debugger
+        var cxt = _app.createContext();
+        test.install(cxt);
         vue.$mount('#app');
     });
 });
