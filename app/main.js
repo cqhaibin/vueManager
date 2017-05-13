@@ -2,7 +2,7 @@ requirejs.config({
     paths:{
         lib: '../lib',
         text: '../lib/text.2.0.15',
-        vue: '../lib/vue.2.1.8',
+        vue: '../lib/vue.2.3.3',
         vueRouter: '../lib/vue-route',
         vuex: '../lib/vuex',
         jquery: '../lib/jquery-3.2.1',
