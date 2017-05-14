@@ -7,7 +7,8 @@ define(['../../app', '../../chart'],function(app, chart){
             }
         },
         beforeCreate:function(){
-            chart.install(app.getVue().createContext());
+            debugger
+            chart.install(app.getApp().createContext());
         }
     }
 });

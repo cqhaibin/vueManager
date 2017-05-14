@@ -7,7 +7,8 @@ requirejs.config({
         vuex: '../lib/vuex',
         jquery: '../lib/jquery-3.2.1',
         css: '../lib/css',
-        iview: '../lib/iview'
+        iview: '../lib/iview',
+        app: './app'
     },
     map: {
         '*':{
@@ -34,14 +35,11 @@ requirejs.config({
 })
 
 
-require(['./app', './test'],function(app, test){
+require(['./app'],function(app){
     debugger
     var _app = app.createApp();
     _app.registerGlobalComponents(['title', 'route', 'layout/default']).done(function(){
         var vue = _app.createVue();
-        debugger
-        var cxt = _app.createContext();
-        test.install(cxt);
         vue.$mount('#app');
     });
 });

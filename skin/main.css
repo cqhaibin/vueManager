@@ -68,7 +68,9 @@
   font-size: 16px;
 }
 
-.layout-default .nav .nav-item a:hover, .layout-default .nav .nav-item a:active {
+.layout-default .nav .nav-item a:hover,
+.layout-default .nav .nav-item a:active,
+.layout-default .nav .nav-item a.active {
   color: #fff;
 }
 

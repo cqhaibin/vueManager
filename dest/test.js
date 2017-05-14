@@ -19,6 +19,10 @@ var main = { render: function render() {
 var index = {
     install: function install(cxt) {
         cxt.Vue.component('mainc', main);
+        cxt.router.addRoutes([{
+            path: '/mainc',
+            component: main
+        }]);
     }
 };
 

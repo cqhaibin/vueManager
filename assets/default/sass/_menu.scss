@@ -20,7 +20,9 @@
     font-family: $font-family;
     font-size: $font-large-size;
 }
-.layout-default .nav .nav-item a:hover, .layout-default .nav .nav-item a:active{
+.layout-default .nav .nav-item a:hover, 
+.layout-default .nav .nav-item a:active, 
+.layout-default .nav .nav-item a.active{
     color: $font-reverse-color;
 }
 .layout-default .nav.nav-child{

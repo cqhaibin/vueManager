@@ -1,8 +1,9 @@
 <div class="layout-default">
     <div class="header">
         <ul class="nav clearfix">
-            <li class="nav-item"><router-link to="/ctitle" >title</router-link></li>
-            <li class="nav-item"><router-link to="/croute" >croute</router-link></li>
+            <li class="nav-item" v-for="(item,index) in roots" >
+                <a href="javascript:void(0)" v-on:click="goto(item, $event)" v-bind:class="{active: item.selected}" >{{item.name}}</a>
+            </li>
         </ul>
     </div>
     <div class="body"> 

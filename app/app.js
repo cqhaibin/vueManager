@@ -72,12 +72,7 @@ define(['require','jquery', 'vue', 'vueRouter', 'vuex', 'iview'],function(requir
     apt.createVue = function(){
         this.vue = new this.Vue({
             store: this.store,
-            router: this.router,
-            data: function(){
-                return {
-                    ttt: 'tttt'
-                }
-            }
+            router: this.router
         });
         return this.vue;
     }
@@ -134,8 +129,11 @@ define(['require','jquery', 'vue', 'vueRouter', 'vuex', 'iview'],function(requir
             _app = new App();
             return _app;
         },
-        getVue: function(){
+        getApp: function(){
             return _app;
+        },
+        getVue: function(){
+            return _app.vue;
         }
     }
 });
