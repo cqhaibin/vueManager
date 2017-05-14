@@ -1,13 +1,45 @@
-.menu-child{
-    margin: 0px;
+.layout-default .nav{
+    margin: 0 auto;
     padding: 0px;
+    width: $nav-width;
+    height: $head-height;
 }
-.menu-child .menu-item{
+.layout-default .nav .nav-item{
+    float: left;
     list-style-type: none;
+    margin: 0px;
     padding: 0px;
+}
+.layout-default .nav .nav-item a{
+    display: inline-block;
+    height: $head-height;
+    line-height: $head-height;
+    color: $font-normal-color;
+    margin: 0px 2px;
+    padding: 0px 10px;
+    font-family: $font-family;
+    font-size: $font-large-size;
+}
+.layout-default .nav .nav-item a:hover, .layout-default .nav .nav-item a:active{
+    color: $font-reverse-color;
+}
+.layout-default .nav.nav-child{
+    margin: 0px;
+    width: auto;
+    height: auto;
+}
+.layout-default .nav.nav-child .nav-item{
+    float: none;
+}
+.layout-default .nav.nav-child .nav-item a{
+    height: 40px;
+    line-height: 40px;
+    width: $nav-child-width;
     margin: 0px;
 }
-.menu-child .menu-item .active{
+.layout-default .nav.nav-child .nav-item a:hover,
+.layout-default .nav.nav-child .nav-item a:active,
+.layout-default .nav.nav-child .nav-item a.active{
     background: $block-light-color;
-    color: $font-light-color;
+    color: $font-reverse-color;
 }

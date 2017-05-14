@@ -6,7 +6,6 @@ requirejs.config({
         vueRouter: '../lib/vue-route',
         vuex: '../lib/vuex',
         jquery: '../lib/jquery-3.2.1',
-        bootstrap: '../lib/bootstrap',
         css: '../lib/css',
         iview: '../lib/iview'
     },
@@ -36,6 +35,7 @@ requirejs.config({
 
 
 require(['./app', './test'],function(app, test){
+    debugger
     var _app = app.createApp();
     _app.registerGlobalComponents(['title', 'route', 'layout/default']).done(function(){
         var vue = _app.createVue();

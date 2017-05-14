@@ -1,18 +1,37 @@
-.layout-default .container-fluid:first-child{
+@import 'compass/utilities/general';
+.layout-default .header{
     padding: 0px;
+    height: $head-height;
+    background: $block-drak-color;
+}
+.layout-default, .layout-default .body, .layout-default .left, .layout-default .main, .layout-default .cont{
+    height: inherit;
+}
+#app{
+    height: 100%;
 }
 .layout-default .left{
     background: $block-noraml-color;
     padding: 0px;
 }
-#app{
-    height: 100%;
-}
-.layout-default, .layout-default .main, .layout-default .row, .layout-default .left, .layout-default .right{
-    height: inherit;
-}
-.layout-default .main{
+.layout-default .body{
     margin-top: -$head-height;
     padding-top: $head-height;
+    width: 100%;
+}
+.layout-default .body .left{
+    float: left;
+    width: $nav-child-width;
+    margin-left: -100%;
+}
+.layout-default .body .main{
+    float: left;
+    width: 100%;
+}
+.layout-default .body .main .cont{
+    margin-left: $nav-child-width;
+}
+.clearfix{
+    @include clearfix;
 }
 

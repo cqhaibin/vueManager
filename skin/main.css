@@ -1,5 +1,15 @@
-.layout-default .container-fluid:first-child {
+.layout-default .header {
   padding: 0px;
+  height: 60px;
+  background: #464c5b;
+}
+
+.layout-default, .layout-default .body, .layout-default .left, .layout-default .main, .layout-default .cont {
+  height: inherit;
+}
+
+#app {
+  height: 100%;
 }
 
 .layout-default .left {
@@ -7,31 +17,81 @@
   padding: 0px;
 }
 
-#app {
-  height: 100%;
+.layout-default .body {
+  margin-top: -60px;
+  padding-top: 60px;
+  width: 100%;
 }
 
-.layout-default, .layout-default .main, .layout-default .row, .layout-default .left, .layout-default .right {
-  height: inherit;
+.layout-default .body .left {
+  float: left;
+  width: 200px;
+  margin-left: -100%;
 }
 
-.layout-default .main {
-  margin-top: -42px;
-  padding-top: 42px;
+.layout-default .body .main {
+  float: left;
+  width: 100%;
 }
 
-.menu-child {
-  margin: 0px;
+.layout-default .body .main .cont {
+  margin-left: 200px;
+}
+
+.clearfix {
+  overflow: hidden;
+  *zoom: 1;
+}
+
+.layout-default .nav {
+  margin: 0 auto;
   padding: 0px;
+  width: 450px;
+  height: 60px;
 }
 
-.menu-child .menu-item {
+.layout-default .nav .nav-item {
+  float: left;
   list-style-type: none;
+  margin: 0px;
   padding: 0px;
+}
+
+.layout-default .nav .nav-item a {
+  display: inline-block;
+  height: 60px;
+  line-height: 60px;
+  color: #657180;
+  margin: 0px 2px;
+  padding: 0px 10px;
+  font-family: "default";
+  font-size: 16px;
+}
+
+.layout-default .nav .nav-item a:hover, .layout-default .nav .nav-item a:active {
+  color: #fff;
+}
+
+.layout-default .nav.nav-child {
+  margin: 0px;
+  width: auto;
+  height: auto;
+}
+
+.layout-default .nav.nav-child .nav-item {
+  float: none;
+}
+
+.layout-default .nav.nav-child .nav-item a {
+  height: 40px;
+  line-height: 40px;
+  width: 200px;
   margin: 0px;
 }
 
-.menu-child .menu-item .active {
+.layout-default .nav.nav-child .nav-item a:hover,
+.layout-default .nav.nav-child .nav-item a:active,
+.layout-default .nav.nav-child .nav-item a.active {
   background: #337ab7;
   color: #fff;
 }

@@ -1,4 +1,4 @@
-define(['bootstrap'],function(){
+define([],function(){
 
     var store = {
         route: { 

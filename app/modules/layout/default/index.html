@@ -1,22 +1,22 @@
 <div class="layout-default">
-    <div class="container-fluid">
-        <ul class="nav nav-tabs">
-            <li><router-link to="/ctitle" >title</router-link></li>
-            <li><router-link to="/croute" >croute</router-link></li>
+    <div class="header">
+        <ul class="nav clearfix">
+            <li class="nav-item"><router-link to="/ctitle" >title</router-link></li>
+            <li class="nav-item"><router-link to="/croute" >croute</router-link></li>
         </ul>
     </div>
-    <div class="container-fluid main">
-        <div class="row">
-            <div class="col-lg-2 left" >
-                <ul class="nav nav-pills nav-stacked menu-child" >
-                    <li v-for="(item,index) in childs" class="menu-item">
-                        <router-link :to="item" active-class="active" >{{item}}</router-link>
-                    </li> 
-                </ul>
-            </div>
-            <div class="col-lg-2 right">
+    <div class="body"> 
+        <div class="main">
+            <div class="cont">
                 <router-view></router-view>                    
-            </div>
+            </div> 
+        </div>
+        <div class="left" >
+            <ul class="nav nav-child" >
+                <li v-for="(item,index) in childs" class="nav-item">
+                    <router-link :to="item" active-class="active" >{{item}}</router-link>
+                </li> 
+            </ul>
         </div>
     </div>
 </div>
