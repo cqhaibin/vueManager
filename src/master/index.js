@@ -7,5 +7,6 @@ export default {
             path: '/mainc',
             component: main
         }]);
+        //注册 api和service做一个测试
     }
 }

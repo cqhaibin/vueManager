@@ -36,7 +36,6 @@ requirejs.config({
 
 
 require(['./app'],function(app){
-    debugger
     var _app = app.createApp();
     _app.registerGlobalComponents(['title', 'route', 'layout/default']).done(function(){
         var vue = _app.createVue();

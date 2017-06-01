@@ -1,4 +1,5 @@
-define(['require','jquery', 'vue', 'vueRouter', 'vuex', 'iview'],function(require,$, Vue, VueRouter, Vuex, iview){
+define(['require','jquery', 'vue', 'vueRouter', 'vuex', 'iview', './Service', './Api'],
+function(require,$, Vue, VueRouter, Vuex, iview, Service, Api){
     require.onResourceLoad = function(context, map, depArray){
         //requirejs 文件load成功后的回调
     }
@@ -14,6 +15,8 @@ define(['require','jquery', 'vue', 'vueRouter', 'vuex', 'iview'],function(requir
         this.router; //router实例对象
         this.vue; //vuex实例对象
         this.store; //存储实例对象
+        this.service = Service; //服务容器
+        this.api = Api; //对向api容器
         this.init();
     }
     var apt = App.prototype;
@@ -24,6 +27,8 @@ define(['require','jquery', 'vue', 'vueRouter', 'vuex', 'iview'],function(requir
         this.Vue.use(VueRouter);
         this.Vue.use(Vuex);
         this.Vue.use(iview);
+        this.Vue.use(this.service);
+        this.Vue.use(this.api);
         this.router = new VueRouter(); 
         this.store = new this.Vuex.Store(this.store);
     }
@@ -35,7 +40,9 @@ define(['require','jquery', 'vue', 'vueRouter', 'vuex', 'iview'],function(requir
         return {
             Vue: this.Vue,
             router: this.router,
-            $vue: this.vue
+            $vue: this.vue,
+            service: this.service,
+            api: this.api
         };
     }
     apt.dfd = function(action){

@@ -12,10 +12,10 @@
                 <router-view></router-view>                    
             </div> 
         </div>
-        <div class="left" >
+        <div class="left">
             <ul class="nav nav-child" >
                 <li v-for="(item,index) in childs" class="nav-item">
-                    <router-link :to="item" active-class="active" >{{item}}</router-link>
+                    <router-link :to="item.href" active-class="active" >{{item.name}}</router-link>
                 </li> 
             </ul>
         </div>
