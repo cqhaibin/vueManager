@@ -1,0 +1,5 @@
+@import '../mixs/_layout';
+$blocks: (header: $layout-big-height, footer: $layout-normal-height); //顶部、底部块
+@include create-block($blocks); //生成顶部、底部模块
+$grids: (big: $layout-big-grid-width, normal: $layout-normal-grid-width, small: $layout-small-grid-width);
+@include create-grid($grids); //生成栏宽
