@@ -25,15 +25,16 @@
 创建一个宽度为100%，而指定了高度的布局块
 */
 
-@mixin create-block($name, $height) {
-    .#{layout-css-prefix}-#{$name} {
-        margin: 0px;
-        padding: 0px;
-        width: 100%;
-        height: $height;
+@mixin create-head-footer($opt){
+    @each $name, $height in $opt{
+        .#{$layout-css-prefix}-#{$name}{
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: $height; 
+        }
     }
 }
-
 
 /*
 创建主内容模块
@@ -47,10 +48,18 @@ $footer-scroll-height: 底部高度
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    padding-top: $top-scroll-height;
-    margin-top: $top-scroll-height;
+    padding: { 
+        top: $top-scroll-height;
+    }
+    margin: {
+        top: -$top-scroll-height;
+    }
     @if $footer-scroll-height>0 {
-        padding-bottom: $footer-scroll-height;
-        margin-bottom: $footer-scroll-height;
+        padding: { 
+            bottom: $footer-scroll-height;
+        }
+        margin: {
+            bottom: -$footer-scroll-height;
+        }
     }
 }
