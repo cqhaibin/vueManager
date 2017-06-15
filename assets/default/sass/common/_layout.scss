@@ -4,9 +4,35 @@ $blocks: (header: $layout-big-height, footer: $layout-normal-height); //顶部�
 .#{$layout-css-prefix}-cont{
    @include create-cont($layout-big-height, $layout-normal-height); //生成中间主操作区域
 }
-$grids: (big: $layout-big-grid-width, normal: $layout-normal-grid-width, small: $layout-small-grid-width);
+$grids: (big: $layout-big-grid-width, normal: $layout-normal-grid-width, small: $layout-small-grid-width, full: 100%);
 @include create-grid($grids); //生成栏宽
+@include create-marginrightOfcont($grids); //生成右侧边距
+@include create-maringOfCont($grids);
 
+.#{$layout-css-prefix}-main{
+    overflow: hidden;
+    height: inherit;
+    overflow-y: auto;
+}
+.#{$layout-css-prefix}-auto-height{
+    min-height: 100%;
+    height: auto;
+    .#{$layout-css-prefix}-main{
+        overflow: auto;
+        height: auto;
+    }
+}
+.#{$layout-css-prefix}-auto{
+    height: auto;
+    .#{$layout-css-prefix}-main, .#{$layout-css-prefix}-left, .#{$layout-css-prefix}-right{
+        overflow: auto;
+        height: auto;
+    }
+}
+.#{$layout-css-prefix}-auto.#{$layout-css-prefix}-cont{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
 .clearfix {
     @include clearfix();
 }

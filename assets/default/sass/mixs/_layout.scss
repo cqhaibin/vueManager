@@ -16,6 +16,7 @@
             padding: 0px;
             float: left;
             width: $width;
+            height: 100%;
         }
     }
 }
@@ -60,6 +61,33 @@ $footer-scroll-height: 底部高度
         }
         margin: {
             bottom: -$footer-scroll-height;
+        }
+    }
+}
+/*margin-right的生成*/
+@mixin create-marginrightOfcont($opt){
+    @each $type, $width in $opt{
+        .#{$layout-css-prefix}-margin-left-#{$type}{
+            margin: {
+                left: -$width;
+            }
+        }
+    }
+}
+
+@mixin create-maringOfCont($opt){
+    @each $type, $width in $opt{
+        @if($type != "full"){
+            .#{$layout-css-prefix}-main.left-#{$type}{
+                margin: {
+                    left: $width;
+                }
+            }
+            .#{$layout-css-prefix}-main.right-#{$type}{
+                margin: {
+                    right: $width;
+                }
+            }
         }
     }
 }
