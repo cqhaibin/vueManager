@@ -5,7 +5,7 @@ var path = require('path');
 var babel = require('rollup-plugin-babel');
 
 module.exports = {
-    entry: path.resolve(__dirname, '../src/master/index.js'),
+    entry: path.resolve(__dirname, '../src/simple/index.js'),
     external: ['vue'],
     plugins: [VueLoader(), babel(), Resolve(), Commonjs()]
 }
