@@ -1,0 +1,143 @@
+@charset "UTF-8";
+/**
+创建一个部分栏，值为：(big:300px, normal: 200px, small: 100px)
+*/
+/*
+创建一个宽度为100%，而指定了高度的布局块
+*/
+/*
+创建主内容模块
+$top-scroll-height: 顶部高度
+$footer-scroll-height: 底部高度
+*/
+/*margin-right的生成*/
+.layout-header {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 60px;
+}
+
+.layout-footer {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 40px;
+}
+
+.layout-cont {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  padding-top: 60px;
+  margin-top: -60px;
+  padding-bottom: 40px;
+  margin-bottom: -40px;
+}
+
+.layout-grid-big {
+  margin: 0px;
+  padding: 0px;
+  float: left;
+  width: 300px;
+  height: 100%;
+}
+
+.layout-grid-normal {
+  margin: 0px;
+  padding: 0px;
+  float: left;
+  width: 200px;
+  height: 100%;
+}
+
+.layout-grid-small {
+  margin: 0px;
+  padding: 0px;
+  float: left;
+  width: 100px;
+  height: 100%;
+}
+
+.layout-grid-full {
+  margin: 0px;
+  padding: 0px;
+  float: left;
+  width: 100%;
+  height: 100%;
+}
+
+.layout-margin-left-big {
+  margin-left: -300px;
+}
+
+.layout-margin-left-normal {
+  margin-left: -200px;
+}
+
+.layout-margin-left-small {
+  margin-left: -100px;
+}
+
+.layout-margin-left-full {
+  margin-left: -100%;
+}
+
+.layout-main.left-big {
+  margin-left: 300px;
+}
+
+.layout-main.right-big {
+  margin-right: 300px;
+}
+
+.layout-main.left-normal {
+  margin-left: 200px;
+}
+
+.layout-main.right-normal {
+  margin-right: 200px;
+}
+
+.layout-main.left-small {
+  margin-left: 100px;
+}
+
+.layout-main.right-small {
+  margin-right: 100px;
+}
+
+.layout-main {
+  overflow: hidden;
+  height: inherit;
+  overflow-y: auto;
+}
+
+.layout-auto-height {
+  min-height: 100%;
+  height: auto;
+}
+.layout-auto-height .layout-main {
+  overflow: auto;
+  height: auto;
+}
+
+.layout-auto {
+  height: auto;
+}
+.layout-auto .layout-main, .layout-auto .layout-left, .layout-auto .layout-right {
+  overflow: auto;
+  height: auto;
+}
+
+.layout-auto.layout-cont {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.clearfix {
+  overflow: hidden;
+  *zoom: 1;
+}

@@ -2,13 +2,19 @@ $head-height: 60px;
 $block-noraml-color: #EFF2F7;
 $block-light-color: #337ab7;
 $block-drak-color: #464c5b;
-
 $font-family: "default";
 $font-normal-size: 12px;
 $font-large-size: 16px;
 $font-normal-color: #657180;
 $font-light-color: #39f;
 $font-reverse-color: #fff;
-
 $nav-width: 450px;
 $nav-child-width: 200px;
+//variable with layout start...
+$layout-css-prefix: 'layout';
+$layout-big-height: 60px;
+$layout-normal-height: 40px;
+$layout-big-grid-width: 300px;
+$layout-normal-grid-width: 200px;
+$layout-small-grid-width: 100px;
+//variable with layout end...
