@@ -1,11 +1,15 @@
 //主框架
 
 import require from 'require';
-import $ from jquery;
-import Vue from vue;
-import VueRouter from vueRouter;
-import Vuex from vuex;
-import iview from iview;
+import $ from "jquery";
+import Vue from "vue";
+import VueRouter from "vueRouter";
+import Vuex from "vuex";
+import iview from "iview";
+import Service from './service';
+import Api from './api';
+
+var _cahce = {}; //业务组件缓存
 
 require.onResourceLoad = function(context, map, depArray){
     //requirejs 文件load成功后的回调
@@ -134,6 +138,31 @@ apt.registerGlobalComponents = function(componentNames){
         dfd.resolve(_router);
     });
     return dfd.promise();
+}
+
+/**
+ * 加载或激活业务模块，在对应路径每次被选择都会执行此函数，所以缓存区分了是否已加载。
+ * @param item 导航对象，可以是root，也可以是child
+ * @param callback 加载完成执行的回调
+ */
+apt.loadThridPart = function(item, callback){
+    var self = this;
+    if(item.thridpart && !_cahce[item.id]){
+        self.acquire(item.path).done(function(arg){
+            arg[0].install(self.createContext()); //安装，只执行一次（加载）
+            if(arg[0].activated){
+                arg[0].activated(self.createContext()); //激活，每次业务模块被选择时执行
+            }
+            _cahce[item.id] = true;
+            callback(item);
+        });
+    }else{
+        var comp = require(item.path);
+        if(comp.activated){
+            comp.activated(self.createContext());
+        }
+        callback(item);
+    }
 }
 
 var _app;

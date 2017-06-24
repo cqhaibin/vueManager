@@ -8,5 +8,8 @@ export default {
             component: main
         }]);
         //注册 api和service做一个测试
+    },
+    activated: function(cxt){
+        //激活事件
     }
 }

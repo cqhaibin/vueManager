@@ -1,4 +1,4 @@
-define(['../../app', '../../chart'],function(app, chart){
+define(['app', '../../chart'],function(app, chart){
     return {
         name: 'croute',
         data: function(){

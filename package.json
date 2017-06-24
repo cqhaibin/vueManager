@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": ".\\node_modules\\.bin\\gulp connect"
+    "dev": ".\\node_modules\\.bin\\gulp connect",
+    "simple": "cross-env TYPE=simple node ./build/runtime-server.js",
+    "master": "cross-env TYPE=master node ./build/runtime-server.js",
+    "layout": "cross-env TYPE=layout node ./build/runtime-server.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,7 @@
   "homepage": "https://github.com/cqhaibin/vueManager#readme",
   "devDependencies": {
     "babel-preset-es2015-rollup": "^3.0.0",
+    "cross-env": "^5.0.1",
     "gulp": "^3.9.1",
     "gulp-compass": "^2.1.0",
     "gulp-connect": "^5.0.0",

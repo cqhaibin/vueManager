@@ -1,5 +1,4 @@
 define(['app'],function(app){
-
     var store = {
         route: { 
             state: {
