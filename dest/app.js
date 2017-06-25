@@ -48,9 +48,9 @@ require.onResourceLoad = function (context, map, depArray) {}
 /**
  * 构造函数
  */
-;function App() {
+;function App(options) {
     this.$components = [];
-    this.$modulePrefix = './modules/';
+    this.$modulePrefix = options.modulePrefix || './modules/';
     this.Vue = Vue; //Vue类对象
     this.Vuex = Vuex; //Vuex类对象
     this.router; //router实例对象
@@ -200,8 +200,8 @@ apt.loadThridPart = function (item, callback) {
 var _app;
 
 var app = {
-    createApp: function createApp() {
-        _app = new App();
+    createApp: function createApp(options) {
+        _app = new App(options || {});
         return _app;
     },
     getApp: function getApp() {

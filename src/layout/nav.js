@@ -2,8 +2,7 @@ var store = {
     route: { 
         state: {
             childs: [],
-            roots: [{id:'ctitle', name: '标题', href: '/ctitle', selected: false},
-            {id:'croute', name: '二级菜单', href: '/croute', selected: false}]
+            roots: []
         },
         mutations: {
             /**
