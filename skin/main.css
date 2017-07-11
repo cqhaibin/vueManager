@@ -97,3 +97,7 @@
   background: #337ab7;
   color: #fff;
 }
+
+.layout-default .ivu-tabs-nav .ivu-tabs-tab {
+  height: auto;
+}

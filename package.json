@@ -8,7 +8,8 @@
     "dev": ".\\node_modules\\.bin\\gulp connect",
     "simple": "cross-env TYPE=simple node ./build/runtime-server.js",
     "master": "cross-env TYPE=master node ./build/runtime-server.js",
-    "layout": "cross-env TYPE=layout node ./build/runtime-server.js"
+    "layout": "cross-env TYPE=layout node ./build/runtime-server.js",
+    "tomato": "cross-env TYPE=tomato node ./build/runtime-server.js"
   },
   "repository": {
     "type": "git",

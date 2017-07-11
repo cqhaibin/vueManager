@@ -40,6 +40,7 @@ require(['require','./app'],function(require, app){
         //如果是异步获取导航数据，需要在此做异步获取并通过vuex来更新导航 
         setTimeout(function() {
             app.getVue().$store.dispatch('root', {id:'mainc', path: './test', thridpart: true, name: '业务组件', href: '/mainc', selected: false});
+            app.getVue().$store.dispatch('root', {id:'tomato', path: '../dest/tomato.js', thridpart: true, name: '蕃茄', href: '/tomato', selected: false});
             app.getVue().$store.dispatch('root', {id:'ctitle', name: '标题', href: '/ctitle', selected: false});
             app.getVue().$store.dispatch('root', {id:'croute', name: '二级菜单', href: '/croute', selected: false});
         }, 3000);

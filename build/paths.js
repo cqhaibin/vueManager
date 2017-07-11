@@ -12,5 +12,9 @@ module.exports = {
     layout:{
         source: path.join(__dirname, "../src/layout/index.js"),
         dest: path.join(__dirname, "../dest/layout.js")
+    },
+    tomato:{
+        source: path.join(__dirname, "../src/tomato timer/index.js"),
+        dest: path.join(__dirname, "../dest/tomato.js")
     }
 }
