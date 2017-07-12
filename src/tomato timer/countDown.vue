@@ -1,10 +1,10 @@
 <template>
-    <div style="margin: 0 auto; width: 400px;" >
+    <div class="tomato-block" >
         <div class="circle">
-            <i-circle v-model:percent="percent" size=360 ></i-circle>
+            <i-circle v-bind:percent="percent" :size=360 ></i-circle>
         </div>
-        <div class="buttons">
-            <Button type="success">开始工作</Button>
+        <div class="btn-group">
+            <Button type="success" v-on:click="start">开始工作</Button>
             <Button type="warning">停止</Button>
             <Button type="info">休息</Button>
         </div>
@@ -13,10 +13,26 @@
 <script>
     export default {
         name: 'countDown',
-        data: function(){
+        data () {
             return {
                 percent: 10
             };
+        },
+        props: {
+            workDuration:{
+                type: Number,
+                default:25
+            },
+            restDuration:{
+                type:Number,
+                default:5
+            }
+        },
+        methods:{
+            start () {
+                // 750 / 1500 * 100
+                this.percent += 10;
+            }
         }
     }
 </script>

@@ -1,0 +1,11 @@
+.tomato-block{
+    margin: 0px auto;
+    width: 400px;
+    .btn-group{
+        text-align: center;
+        margin-top: 10px;
+        button + button{
+            margin-left: 5px;
+        }
+    }
+}

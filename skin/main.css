@@ -101,3 +101,15 @@
 .layout-default .ivu-tabs-nav .ivu-tabs-tab {
   height: auto;
 }
+
+.tomato-block {
+  margin: 0px auto;
+  width: 400px;
+}
+.tomato-block .btn-group {
+  text-align: center;
+  margin-top: 10px;
+}
+.tomato-block .btn-group button + button {
+  margin-left: 5px;
+}
