@@ -113,3 +113,9 @@
 .tomato-block .btn-group button + button {
   margin-left: 5px;
 }
+.tomato-block .btn-group button:first-child {
+  margin-left: -50px;
+}
+.tomato-block .circle-time {
+  font-size: 120px;
+}

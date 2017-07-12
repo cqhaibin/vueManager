@@ -1,10 +1,10 @@
 <template>
     <div style="height: auto;" >
-    <Tabs value="tomato">
-        <Tab-pane label="工作">
+    <Tabs value="work">
+        <Tab-pane label="工作" name="work">
             <CountDown></CountDown>
         </Tab-pane>
-        <Tab-pane label="记录">
+        <Tab-pane label="记录" name="history">
             <History></History>
         </Tab-pane>
     </Tabs>

@@ -7,5 +7,11 @@
         button + button{
             margin-left: 5px;
         }
+        button:first-child{
+            margin-left: -50px;
+        }
+    }
+    .circle-time{
+        font-size: 120px;
     }
 }
