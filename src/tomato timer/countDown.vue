@@ -48,6 +48,7 @@
                 this.durationPro(restTime);
             },
             stop (){
+                this.$service.tomato.addRecord();
                 window.clearInterval(this.timeIndex);
                 this.timeIndex = null;
             },

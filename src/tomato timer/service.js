@@ -3,9 +3,10 @@ import Keys from './keys';
 class Service{
     constructor(cxt){
         this.cxt = cxt;
+        this.$store = this.cxt.$vue.$store;
     }
-    [Keys.addRecord] (){
-
+    addRecord (){
+        this.$store.commit(Keys.addRecord,{id: "id"});
     }
 }
 

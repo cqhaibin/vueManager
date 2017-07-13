@@ -38,6 +38,7 @@ var CountDown = { render: function render() {
             this.durationPro(restTime);
         },
         stop: function stop() {
+            this.$service.tomato.addRecord();
             window.clearInterval(this.timeIndex);
             this.timeIndex = null;
         },
@@ -94,6 +95,92 @@ var tomato = { render: function render() {
     }
 };
 
+var keys = {
+    addRecord: "ADDRECORD",
+    removeAllRecord: "REMOVEALLRECORD",
+    saveSetting: "SAVESETTING"
+};
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+
+
+
+
+var defineProperty = function (obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+};
+
+var Service = function () {
+    function Service(cxt) {
+        classCallCheck(this, Service);
+
+        this.cxt = cxt;
+        this.$store = this.cxt.$vue.$store;
+    }
+
+    createClass(Service, [{
+        key: "addRecord",
+        value: function addRecord() {
+            this.$store.commit(keys.addRecord, { id: "id" });
+        }
+    }]);
+    return Service;
+}();
+
+var _mutations;
+
+var state = {
+    records: [],
+    setting: {}
+};
+
+var mutations = (_mutations = {}, defineProperty(_mutations, keys.addRecord, function (state, record) {
+    state.records.push(record);
+}), defineProperty(_mutations, keys.removeAllRecord, function (state) {
+    state.records = [];
+}), defineProperty(_mutations, keys.saveSetting, function (state, setting) {
+    state.setting = setting;
+}), _mutations);
+
+var store = {
+    state: state,
+    mutations: mutations
+};
+
 var index = {
     install: function install(cxt) {
         cxt.Vue.component("tomatoTimer", tomato);
@@ -101,6 +188,9 @@ var index = {
             path: '/tomato',
             component: tomato
         }]);
+        cxt.service.registerService("tomato", new Service(cxt));
+        debugger;
+        cxt.$vue.$store.registerModule("tomato", store);
     }
 };
 
