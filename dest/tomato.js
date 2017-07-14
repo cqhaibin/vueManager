@@ -1,7 +1,9 @@
 define(function () { 'use strict';
 
 var CountDown = { render: function render() {
-        var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('div', { staticClass: "tomato-block" }, [_c('div', { staticClass: "circle" }, [_c('i-circle', { attrs: { "percent": _vm.percent, "size": 360 } }, [_c('span', { staticClass: "circle-time" }, [_vm._v(_vm._s(_vm.timeStr))])])], 1), _c('div', { staticClass: "btn-group" }, [_c('Button', { attrs: { "type": "success" }, on: { "click": _vm.startWork } }, [_vm._v("开始工作")]), _c('Button', { attrs: { "type": "warning" }, on: { "click": _vm.stop } }, [_vm._v("停止")]), _c('Button', { attrs: { "type": "info" }, on: { "click": _vm.startRest } }, [_vm._v("休息")])], 1)]);
+        var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('div', { staticClass: "tomato-block" }, [_c('div', { staticClass: "circle" }, [_c('i-circle', { attrs: { "percent": _vm.percent, "size": 360 } }, [_c('span', { staticClass: "circle-time" }, [_vm._v(_vm._s(_vm.timeStr))])])], 1), _c('div', { staticClass: "btn-group" }, [_c('Button', { attrs: { "type": "success" }, on: { "click": function click($event) {
+                    _vm.startWork($event);
+                } } }, [_vm._v("开始工作")]), _c('Button', { attrs: { "type": "warning" }, on: { "click": _vm.stop } }, [_vm._v("停止")]), _c('Button', { attrs: { "type": "info" }, on: { "click": _vm.startRest } }, [_vm._v("休息")])], 1)]);
     }, staticRenderFns: [],
     name: 'countDown',
     data: function data() {
@@ -23,7 +25,8 @@ var CountDown = { render: function render() {
         }
     },
     methods: {
-        startWork: function startWork() {
+        startWork: function startWork(event) {
+            debugger;
             // 750 / 1500 * 100
             //this.percent += 10;
             this.percent = 100;
@@ -145,17 +148,19 @@ var defineProperty = function (obj, key, value) {
 };
 
 var Service = function () {
-    function Service(cxt) {
+    function Service(store, storage) {
         classCallCheck(this, Service);
 
-        this.cxt = cxt;
-        this.$store = this.cxt.$vue.$store;
+        this.$store = store;
+        this.storage = storage;
+        this.storageKey = "RECORDS";
     }
 
     createClass(Service, [{
         key: "addRecord",
         value: function addRecord() {
             this.$store.commit(keys.addRecord, { id: "id" });
+            this.storage.changeValue(this.storageKey, JSON.stringify(this.$store.state.records));
         }
     }]);
     return Service;
@@ -181,6 +186,28 @@ var store = {
     mutations: mutations
 };
 
+/**
+ * 本地存储
+ */
+var LocalStorage = function () {
+    function LocalStorage() {
+        classCallCheck(this, LocalStorage);
+    }
+
+    createClass(LocalStorage, [{
+        key: "changeValue",
+        value: function changeValue(name, val) {
+            window.localStorage.setItem(name, val);
+        }
+    }, {
+        key: "readValue",
+        value: function readValue(name) {
+            window.localStorage.getItem(name);
+        }
+    }]);
+    return LocalStorage;
+}();
+
 var index = {
     install: function install(cxt) {
         cxt.Vue.component("tomatoTimer", tomato);
@@ -188,8 +215,7 @@ var index = {
             path: '/tomato',
             component: tomato
         }]);
-        cxt.service.registerService("tomato", new Service(cxt));
-        debugger;
+        cxt.service.registerService("tomato", new Service(cxt.$vue.$store, LocalStorage));
         cxt.$vue.$store.registerModule("tomato", store);
     }
 };
