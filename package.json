@@ -42,6 +42,7 @@
     "rollup-plugin-vue": "^2.4.0"
   },
   "dependencies": {
+    "iview": "^2.0.0-rc.19",
     "lodash": "^4.17.4"
   }
 }

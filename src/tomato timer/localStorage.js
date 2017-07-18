@@ -9,7 +9,7 @@ class LocalStorage{
         window.localStorage.setItem(name,val);
     }
     readValue(name){
-        window.localStorage.getItem(name);
+        return window.localStorage.getItem(name);
     }
 }
 

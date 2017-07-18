@@ -10,7 +10,7 @@ export default {
             path: '/tomato',
             component: tomato
         }]);
+        cxt.$vue.$store.registerModule("tomato", store); //先注册存储，再注册服务
         cxt.service.registerService("tomato", new Service(cxt.$vue.$store, new localStorage()));
-        cxt.$vue.$store.registerModule("tomato", store);
     }
 }

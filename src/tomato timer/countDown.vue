@@ -4,6 +4,7 @@
             <i-circle v-bind:percent="percent" :size=360 >
                <span class="circle-time" >{{timeStr}}</span>
             </i-circle>
+            <Input v-model="content" type="textarea" ></Input>
         </div>
         <div class="btn-group">
             <Button type="success" v-on:click="startWork">开始工作</Button>
@@ -21,7 +22,8 @@
                 percent: 0,
                 timeStr:'00:00',
                 timeIndex:null,
-                currentRecord:null
+                currentRecord:null,
+                content:null
             };
         },
         props: {
@@ -42,13 +44,14 @@
                 this.timeStr = this.workDuration + ":00";
                 var workTime = this.workDuration * 60;
                 this.durationPro(workTime);
-                this.$service.tomato.start(TYPE.work, workTime);
+                this.$service.tomato.start(TYPE.work, workTime, this.content);
             },
             startRest (){
                 this.percent = 100;
                 this.timeStr = "0" + this.restDuration + ":00";
                 var restTime = this.restDuration * 60;
                 this.durationPro(restTime);
+                this.$service.tomato.start(TYPE.rest, restTime, "休息时间");
             },
             stop (){
                 this.$service.tomato.stop(false);

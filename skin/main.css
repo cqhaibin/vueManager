@@ -119,3 +119,18 @@
 .tomato-block .circle-time {
   font-size: 120px;
 }
+
+.tomato-history .row-info td {
+  background: #f8f8f9;
+  color: #657180;
+}
+.tomato-history .row-err td {
+  background: #bbbec4;
+  color: #fff;
+}
+.tomato-history .state-cell .run {
+  margin-left: 10px;
+}
+.tomato-history .state-cell .run.undone {
+  color: #ed3f14;
+}

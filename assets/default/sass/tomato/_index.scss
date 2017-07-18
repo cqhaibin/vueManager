@@ -15,3 +15,21 @@
         font-size: 120px;
     }
 }
+.tomato-history {
+    .row-info td{
+        background: #f8f8f9;
+        color: #657180;
+    }
+    .row-err td{
+        background: #bbbec4;
+        color: #fff;
+    }
+    .state-cell{
+        .run{
+            margin-left: 10px;
+        }
+        .run.undone{
+            color: #ed3f14
+        }
+    }
+}
