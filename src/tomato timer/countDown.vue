@@ -13,13 +13,15 @@
     </div>
 </template>
 <script>
+    import {TYPE} from './keys';
     export default {
         name: 'countDown',
         data () {
             return {
                 percent: 0,
                 timeStr:'00:00',
-                timeIndex:null
+                timeIndex:null,
+                currentRecord:null
             };
         },
         props: {
@@ -40,6 +42,7 @@
                 this.timeStr = this.workDuration + ":00";
                 var workTime = this.workDuration * 60;
                 this.durationPro(workTime);
+                this.$service.tomato.start(TYPE.work, workTime);
             },
             startRest (){
                 this.percent = 100;
@@ -48,7 +51,7 @@
                 this.durationPro(restTime);
             },
             stop (){
-                this.$service.tomato.addRecord();
+                this.$service.tomato.stop(false);
                 window.clearInterval(this.timeIndex);
                 this.timeIndex = null;
             },
@@ -61,6 +64,7 @@
                     increase ++;
                     if(increase > time){ //时间到点
                         this.percent = 0;
+                        this.$service.tomato.stop(true);
                         window.clearTimeout(this.timeIndex);
                         return;
                     }
