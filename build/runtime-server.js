@@ -6,6 +6,7 @@ var type = process.env.TYPE;
 rollup.rollup(masterConfig).then(function(bundle){
     bundle.write({
         format: 'amd',
+        sourceMap: true,
         dest: path.resolve(__dirname, paths[type].dest)
     });
 });

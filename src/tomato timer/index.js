@@ -10,7 +10,7 @@ export default {
             path: '/tomato',
             component: tomato
         }]);
-        cxt.service.registerService("tomato", new Service(cxt.$vue.$store, localStorage));
+        cxt.service.registerService("tomato", new Service(cxt.$vue.$store, new localStorage()));
         cxt.$vue.$store.registerModule("tomato", store);
     }
 }

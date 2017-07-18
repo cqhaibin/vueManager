@@ -9,11 +9,17 @@ class Service{
         this.storageKey = "RECORDS";
         this.currentRecord = null;
         this._prefix = "record_";
+        this.$state = this.$store.state;
     }
     addRecord (){
         this.$store.commit(Keys.addRecord,this.currentRecord);
-        this.storage.changeValue(this.storageKey, JSON.stringify(this.$store.state.records));
+        this.storage.changeValue(this.storageKey, JSON.stringify(this.$state.tomato.records));
     }
+
+    getRecords(){
+        return this.$state.tomato.records;
+    }
+
     /**
      * 开始做事情
      * @param type TYPE，事件状态
@@ -23,7 +29,7 @@ class Service{
         let record = new Record(), nowDate = new Date();
         record.id = _.uniqueId(this._prefix);
         record.begTime = nowDate;
-        record.endTime = nowDate.setSeconds(nowDate.getSeconds() + duration);
+        record.endTime = new Date( nowDate.getTime() + duration * 1000 );
         record.type = type;
         this.currentRecord = record;
     }
@@ -32,7 +38,7 @@ class Service{
      * @param isauto 是否自动停止
      */
     stop(isauto){
-        this.currentRecord.stopTime = new Ddate();
+        this.currentRecord.stopTime = new Date();
         this.currentRecord.state = isauto ? true : false;
         this.addRecord();
     }

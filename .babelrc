@@ -1,3 +1,9 @@
 {
-    "presets": ["es2015-rollup"]
+    "presets": [["latest",{
+        "es2015":{
+            "modules":false
+        }
+    }]],
+    "plugins": ["lodash"],
+    "compact": true
 }
