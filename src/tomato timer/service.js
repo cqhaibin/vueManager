@@ -1,5 +1,5 @@
 import Keys from './keys';
-import {Record} from './model';
+import {Record, Setting} from './model';
 import _ from 'lodash';
 
 class Service{
@@ -7,6 +7,7 @@ class Service{
         this.$store = store;
         this.storage = storage;
         this.storageKey = "RECORDS";
+        this.storageSettingKey = "Setting"
         this.currentRecord = null;
         this._prefix = "record_";
         this.$state = this.$store.state;
@@ -17,8 +18,21 @@ class Service{
         this.storage.changeValue(this.storageKey, JSON.stringify(this.$state.tomato.records));
     }
 
+    saveSetting(data){
+        this.$store.commit(Keys.saveSetting,data);
+        this.storage.changeValue(this.storageSettingKey,JSON.stringify(this.$state.tomato.setting));
+    }
+
     getRecords(){
         return this.$state.tomato.records;
+    }
+
+    getSetting(){
+        let setting = this.$state.tomato.setting;
+        if(!setting){
+            setting = new Setting(25,5);
+        }
+        return setting;
     }
 
     clear(){
@@ -33,6 +47,11 @@ class Service{
             arrayData.forEach((data,index)=>{
                 this.$store.commit(Keys.addRecord, data);
             });
+        }
+        //setting
+        var str = this.storage.readValue(this.storageSettingKey);
+        if(str){
+            this.$store.commit(Keys.saveSetting, JSON.parse(str));
         }
     }
 

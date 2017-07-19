@@ -21,9 +21,9 @@
             CountDown,
             History
         },
-        data: function(){
-            return {
-
+        computed:{
+            setting:function(){
+                let setting = this.$service.tomato.getSetting();
             }
         }
     }

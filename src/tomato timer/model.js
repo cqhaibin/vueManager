@@ -9,3 +9,12 @@ export class Record{
         this.stopTime = null; //停止时间
     }
 }
+/**
+ * 设置配置模型
+ */
+export class Setting{
+    constructor( workTime, restTime){
+        this.workTime = workTime;
+        this.restTime = resetTime;
+    }
+}
