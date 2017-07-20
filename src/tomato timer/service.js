@@ -1,5 +1,6 @@
 import Keys from './keys';
 import {Record, Setting} from './model';
+import{optionsDefault} from './state';
 import _ from 'lodash';
 
 class Service{
@@ -30,7 +31,7 @@ class Service{
     getSetting(){
         let setting = this.$state.tomato.setting;
         if(!setting){
-            setting = new Setting(25,5);
+            setting = new Setting(optionsDefault.workDuration,optionsDefault.restDuration);
         }
         return setting;
     }
@@ -51,7 +52,8 @@ class Service{
         //setting
         var str = this.storage.readValue(this.storageSettingKey);
         if(str){
-            this.$store.commit(Keys.saveSetting, JSON.parse(str));
+            let obj = JSON.parse(str);
+            this.$store.commit(Keys.saveSetting, new Setting(obj.workDuration, obj.restDuration) );
         }
     }
 

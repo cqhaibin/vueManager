@@ -134,3 +134,7 @@
 .tomato-history .state-cell .run.undone {
   color: #ed3f14;
 }
+
+.tomato-setting-block {
+  width: 300px;
+}

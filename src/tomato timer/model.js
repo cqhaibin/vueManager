@@ -14,7 +14,7 @@ export class Record{
  */
 export class Setting{
     constructor( workTime, restTime){
-        this.workTime = workTime;
-        this.restTime = resetTime;
+        this.workDuration = workTime;
+        this.restDuration = restTime;
     }
 }
