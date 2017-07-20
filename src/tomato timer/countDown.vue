@@ -1,10 +1,11 @@
 <template>
     <div class="tomato-block" >
+        <h1 class="title" >蕃茄钟--工作法</h1>
         <div class="circle">
             <i-circle v-bind:percent="percent" :size=360 >
                <span class="circle-time" >{{timeStr}}</span>
             </i-circle>
-            <Input v-model="content" type="textarea" ></Input>
+            <Input v-model="content" type="textarea" placeholder="请输入您要完成的任务..." ></Input>
         </div>
         <div class="btn-group">
             <Button type="success" v-on:click="startWork">开始工作</Button>
@@ -15,6 +16,8 @@
 </template>
 <script>
     import {TYPE} from './keys';
+    import dom from './dom';
+    import {popInfo} from './state';
     export default {
         name: 'countDown',
         data () {
@@ -69,9 +72,12 @@
                         this.percent = 0;
                         this.$service.tomato.stop(true);
                         window.clearTimeout(this.timeIndex);
+                        dom.setTitle(popInfo.complete);
+                        dom.alert(popInfo.complete);
                         return;
                     }
                     this.timeStr = this.secondToTime( time - increase );
+                    dom.setTitle(popInfo.runtime + this.timeStr);
                     if(!(increase % step)){ //不应该算百分比
                         return;
                     }

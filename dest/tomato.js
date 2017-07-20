@@ -1,18 +1,23 @@
-define(function () { 'use strict';
+var tomato = (function () {
+'use strict';
 
-var keys = {addRecord:"ADDRECORD",removeAllRecord:"REMOVEALLRECORD",saveSetting:"SAVESETTING"};/**
+var keys = {addRecord:"ADDRECORD",removeAllRecord:"REMOVEALLRECORD",saveSetting:"SAVESETTING"/**
  * 事件状态：1：工作，2：休息
- */var TYPE={work:1,rest:2};
+ */};var TYPE={work:1,rest:2};
 
-var CountDown = {render:function render(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"tomato-block"},[_c('div',{staticClass:"circle"},[_c('i-circle',{attrs:{"percent":_vm.percent,"size":360}},[_c('span',{staticClass:"circle-time"},[_vm._v(_vm._s(_vm.timeStr))])]),_c('Input',{attrs:{"type":"textarea"},model:{value:_vm.content,callback:function callback($$v){_vm.content=$$v;},expression:"content"}})],1),_c('div',{staticClass:"btn-group"},[_c('Button',{attrs:{"type":"success"},on:{"click":_vm.startWork}},[_vm._v("开始工作")]),_c('Button',{attrs:{"type":"warning"},on:{"click":_vm.stop}},[_vm._v("停止")]),_c('Button',{attrs:{"type":"info"},on:{"click":_vm.startRest}},[_vm._v("休息")])],1)]);},staticRenderFns:[],name:'countDown',data:function data(){return{percent:0,timeStr:'00:00',timeIndex:null,currentRecord:null,content:null};},props:{workDuration:{type:Number,default:25},restDuration:{type:Number,default:5}},methods:{startWork:function startWork(){// 750 / 1500 * 100
+var dom = {setTitle:function setTitle(title){document.title=title;},alert:function(_alert){function alert(_x){return _alert.apply(this,arguments);}alert.toString=function(){return _alert.toString();};return alert;}(function(text){alert(text);})};
+
+var type=["","努力工作","轻松时刻"];var state={complete:"完成",run:"未完成"/**
+ * 默认配置信息
+ */};var optionsDefault={workDuration:25,restDuration:5/**
+提示信息
+ */};var popInfo={complete:"恭喜您，完成一个任务",runtime:"剩余："};
+
+var CountDown = {render:function render(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"tomato-block"},[_c('h1',{staticClass:"title"},[_vm._v("蕃茄钟--工作法")]),_c('div',{staticClass:"circle"},[_c('i-circle',{attrs:{"percent":_vm.percent,"size":360}},[_c('span',{staticClass:"circle-time"},[_vm._v(_vm._s(_vm.timeStr))])]),_c('Input',{attrs:{"type":"textarea","placeholder":"请输入您要完成的任务..."},model:{value:_vm.content,callback:function callback($$v){_vm.content=$$v;},expression:"content"}})],1),_c('div',{staticClass:"btn-group"},[_c('Button',{attrs:{"type":"success"},on:{"click":_vm.startWork}},[_vm._v("开始工作")]),_c('Button',{attrs:{"type":"warning"},on:{"click":_vm.stop}},[_vm._v("停止")]),_c('Button',{attrs:{"type":"info"},on:{"click":_vm.startRest}},[_vm._v("休息")])],1)]);},staticRenderFns:[],name:'countDown',data:function data(){return{percent:0,timeStr:'00:00',timeIndex:null,currentRecord:null,content:null};},props:{workDuration:{type:Number,default:25},restDuration:{type:Number,default:5}},methods:{startWork:function startWork(){// 750 / 1500 * 100
 //this.percent += 10;
 this.percent=100;this.timeStr=this.workDuration+":00";var workTime=this.workDuration*60;this.durationPro(workTime);this.$service.tomato.start(TYPE.work,workTime,this.content);},startRest:function startRest(){this.percent=100;this.timeStr="0"+this.restDuration+":00";var restTime=this.restDuration*60;this.durationPro(restTime);this.$service.tomato.start(TYPE.rest,restTime,"休息时间");},stop:function stop(){this.$service.tomato.stop(false);window.clearInterval(this.timeIndex);this.timeIndex=null;},durationPro:function durationPro(time){var _this=this;var increase=0,step=2;if(this.timeIndex){window.clearInterval(this.timeIndex);}this.timeIndex=window.setInterval(function(){increase++;if(increase>time){//时间到点
-_this.percent=0;_this.$service.tomato.stop(true);window.clearTimeout(_this.timeIndex);return;}_this.timeStr=_this.secondToTime(time-increase);if(!(increase%step)){//不应该算百分比
+_this.percent=0;_this.$service.tomato.stop(true);window.clearTimeout(_this.timeIndex);dom.setTitle(popInfo.complete);dom.alert(popInfo.complete);return;}_this.timeStr=_this.secondToTime(time-increase);dom.setTitle(popInfo.runtime+_this.timeStr);if(!(increase%step)){//不应该算百分比
 return;}var tmp=increase/time*100;_this.percent=100-tmp;},1000);},secondToTime:function secondToTime(time){var hour=Math.floor(time/3600),minute=Math.floor(time/60)%60,second=time%60;return(minute>=10?minute:'0'+minute)+":"+(second>=10?second:'0'+second);}}};
-
-var type=["","努力工作","轻松时刻"];var state={complete:"完成",run:"未完成"};/**
- * 默认配置信息
- */var optionsDefault={workDuration:25,restDuration:5};
 
 var History = {render:function render(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"tomato-history"},[_c('Button',{attrs:{"type":"warning"},on:{"click":_vm.clearAll}},[_vm._v("清空")]),_c('Table',{attrs:{"columns":_vm.column,"data":_vm.records,"no-data-text":"暂无数据","row-class-name":_vm.rowClassName}})],1);},staticRenderFns:[],name:'history',data:function data(){return{column:[{title:"说明",key:"content",render:function render(h,params){var str="["+new Date(params.row.begTime).toLocaleString()+"] - ["+new Date(params.row.endTime).toLocaleString()+"] 做 "+params.row.content;return h('div',str);}},{title:"状态",key:"state",render:function render(h,params){return h('div',{class:{'state-cell':true}},[h('span',type[params.row.type]),h('span',{class:{'run':true,'undone':!params.row.state}},params.row.state?state.success:state.run)]);}}]};},computed:{records:function records(){return this.$service.tomato.getRecords();}},methods:{rowClassName:function rowClassName(row,index){return row.state?'row-info':'row-err';},clearAll:function clearAll(){this.$service.tomato.clear();}}};
 
@@ -218,5 +223,5 @@ cxt.service.registerService("tomato",new Service(cxt.$vue.$store,new LocalStorag
 
 return index;
 
-});
+}());
 //# sourceMappingURL=tomato.js.map

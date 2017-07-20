@@ -10,3 +10,10 @@ export var optionsDefault = {
     workDuration: 25,
     restDuration: 5
 }
+/**
+提示信息
+ */
+export var popInfo = {
+    complete: "恭喜您，完成一个任务",
+    runtime: "剩余："
+}

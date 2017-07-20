@@ -98,13 +98,17 @@
   color: #fff;
 }
 
-.layout-default .ivu-tabs-nav .ivu-tabs-tab {
+.ivu-tabs-nav .ivu-tabs-tab {
   height: auto;
 }
 
 .tomato-block {
   margin: 0px auto;
   width: 400px;
+}
+.tomato-block .title {
+  text-align: center;
+  margin-left: -10px;
 }
 .tomato-block .btn-group {
   text-align: center;

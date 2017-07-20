@@ -1,6 +1,10 @@
 .tomato-block{
     margin: 0px auto;
     width: 400px;
+    .title{
+        text-align:center;
+        margin-left: -10px;
+    }
     .btn-group{
         text-align: center;
         margin-top: 10px;

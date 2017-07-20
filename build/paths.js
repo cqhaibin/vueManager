@@ -16,5 +16,9 @@ module.exports = {
     tomato:{
         source: path.join(__dirname, "../src/tomato timer/index.js"),
         dest: path.join(__dirname, "../dest/tomato.js")
+    },
+    aloneTomato:{
+        source: path.join(__dirname, "../src/tomato timer/aloneIndex.js"),
+        dest: path.join(__dirname, "../dest/alonetomato.js")
     }
 }
