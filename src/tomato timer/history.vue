@@ -27,7 +27,7 @@
                             return h('div',{
                                 class: { 'state-cell' : true }
                             },[h('span', type[params.row.type]),
-                             h('span', { class: { 'run': true, 'undone': !params.row.state } } , params.row.state ? state.success: state.run )]);
+                             h('span', { class: { 'run': true, 'undone': !params.row.state } } , params.row.state ? state.complete: state.run )]);
                         }
                     }
                 ]

@@ -1,6 +1,6 @@
 <template>
     <div class="tomato-block" >
-        <h1 class="title" >蕃茄钟--工作法</h1>
+        <h1 class="title" >tomato timer</h1>
         <div class="circle">
             <i-circle v-bind:percent="percent" :size=360 >
                <span class="circle-time" >{{timeStr}}</span>
